@@ -1,0 +1,19 @@
+# cryptic_tss.py - runtime dependencies
+#
+#     pip install -r requirements.txt
+#
+# On macOS, xgboost also needs the OpenMP runtime, which pip cannot supply:
+#     brew install libomp
+#
+# Floors match the environment best_model.pkl was trained and saved in
+# (checked 2026-08-21). joblib pickles are sensitive to library versions,
+# so the ceilings guard against a future major release changing the
+# internal format. Do not lower the xgboost floor below 3.0: the model
+# was saved by 3.3.0 and older versions may not load it.
+
+numpy>=2.4,<3.0
+pandas>=3.0,<4.0
+scikit-learn>=1.9,<2.0
+xgboost>=3.3,<4.0
+joblib>=1.3,<2.0
+matplotlib>=3.7,<4.0
